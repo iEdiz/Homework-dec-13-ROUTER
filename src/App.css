@@ -44,6 +44,7 @@ body {
   border: 2px solid black;
   border-radius: 40px;
   background-color: #f5c2ae;
+  box-shadow: 0px 0px 5px 3px rgb(128, 116, 104);
   word-wrap: break-word;
   transition: transform 0.3s;
 }
@@ -326,6 +327,7 @@ body {
 
     &:hover {
       transform: scale(1.2);
+      box-shadow: 0px 0px 4px 2px rgb(161, 144, 122);
     }
 
     &:active {
