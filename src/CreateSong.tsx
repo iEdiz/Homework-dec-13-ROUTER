@@ -16,14 +16,14 @@ const getRandomImage = () => {
     return `https://generatorfun.com/code/uploads/Random-Medieval-image-${randomNumbers}.jpg`
 }
 
-export const CreatePost = () => {
+export const CreateSong = () => {
     const navigate = useNavigate();
     const nameRef = useRef<HTMLInputElement>(null);
     const performerRef = useRef<HTMLInputElement>(null);
     const descriptionRef = useRef<HTMLInputElement>(null);
     const releaseYearRef = useRef<HTMLInputElement>(null);
 
-    const createPostMutation = useMutation({
+    const CreateSongMutation = useMutation({
         mutationFn: createSong,
         onSuccess: () => {
             navigate('/songs');
@@ -32,11 +32,11 @@ export const CreatePost = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        createPostMutation.mutate({
+        CreateSongMutation.mutate({
             name: nameRef.current?.value || '',
             performer: performerRef.current?.value || '',
             description: descriptionRef.current?.value || '',
-            releaseYear: releaseYearRef.current?.value || '',
+            releaseYear: Number(releaseYearRef.current?.value),
             image: getRandomImage(),
         })
     }
@@ -67,7 +67,7 @@ export const CreatePost = () => {
                     ref={descriptionRef}
                     />
                     <input
-                    type='text'
+                    type='number'
                     className='song__releaseYear'
                     placeholder='Release year...'
                     ref={releaseYearRef}

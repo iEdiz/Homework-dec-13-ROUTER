@@ -4,7 +4,7 @@ type Song = {
     name: string,
     performer: string,
     description: string,
-    releaseYear: string,
+    releaseYear: number,
     image: string,
 }
 

@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Home } from './Home';
 import { Songs } from './Songs';
 import { About } from './About';
-import { CreatePost } from './CreatePost';
+import { CreateSong } from './CreateSong';
 import './App.css'
 import { SongDetail } from './SongDetails';
 
@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/songs" element={<Songs />} />
         <Route path='/songs/:id' element={<SongDetail />} />
-        <Route path="/create-post" element={<CreatePost />} />
+        <Route path="/create-post" element={<CreateSong />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </div>
