@@ -117,7 +117,7 @@ body {
   flex-basis: calc(50% - 10px);
 }
 
-.song__delete:hover, .song__add-button:hover, .song__edit:hover, .song__edit-button:hover {
+.song__delete:hover, .song__add-button:hover {
   opacity: 0.8;
   transition: 0.3s;
 }
@@ -127,28 +127,6 @@ body {
   color: #fca17d;;
   opacity: 1;
   border: 3px solid #fca17d;
-}
-
-.song__edit {
-  padding: 15px 25px;
-  width: 100%;
-  min-width: 120px;
-  border-radius: 10px;
-  margin: 20px 0 0 0px;
-  border: 3px solid rgb(59, 58, 58);;
-  background-color: #f3bd6b;
-  color: rgb(59, 58, 58);
-  font-family: cursive;
-  font-size: 20px;
-  cursor: pointer;
-  flex-basis: calc(50% - 10px);
-}
-
-.song__edit:focus {
-  background-color: rgb(59, 58, 58);
-  color: #f3bd6b;;;
-  opacity: 1;
-  border: 3px solid #f3bd6b;
 }
 
 .form-wrapper {
@@ -260,13 +238,6 @@ body {
   display: flex;
   width: 100%;
   justify-content: space-between;
-}
-
-.song__edit-button:focus {
-  background-color: rgb(59, 58, 58);
-  color: #A2A3C7;
-  opacity: 1;
-  border: 3px solid #A2A3C7;
 }
 
 .song__add-button:focus {

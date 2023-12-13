@@ -73,7 +73,12 @@ export const CreateSong = () => {
                     ref={releaseYearRef}
                     />
                     <div className='add-button-wrapper'>
-                        <button type="submit" className='song__add-button'> Create </button>
+                        <button 
+                        type="submit" 
+                        className='song__add-button'
+                        >
+                            Create
+                        </button>
                     </div>
                 </form>
         </div>
