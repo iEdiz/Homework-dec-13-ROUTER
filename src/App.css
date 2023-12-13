@@ -18,15 +18,22 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 30px;
-  margin: 20px 0 30px 0
+  gap: 25px;
+  margin: 0;
+}
+
+.song-individual {
+  height: 300px;
+  width: 100%;
 }
 
 .song-title {
     text-align: center;
+    font-size: 50px;
+    margin: 50px 0 20px 0;
 }
 
-.song {
+.song, .clicked__song {
   display: flex;
   flex-direction: column;
   max-width: 400px;
@@ -38,6 +45,23 @@ body {
   border-radius: 40px;
   background-color: #f5c2ae;
   word-wrap: break-word;
+  transition: transform 0.3s;
+}
+
+.song:hover {
+  transform: scale(1.1);
+}
+
+.song.hover {
+  transform: scale(0.8);
+}
+
+.song-wrapper:hover .song {
+  transform: scale(0.8);
+}
+
+.song-wrapper:hover .song:hover {
+  transform: scale(1.1);
 }
 
 .title, .performer, .description, .releaseYear {
@@ -135,6 +159,14 @@ body {
   flex-direction: column;
 }
 
+.form-background {
+  background-color: rgb(213, 195, 173);
+  border-radius: 15px;
+  margin-top: 20px;
+  padding: 30px 70px;
+  box-shadow: 0px 0px 5px 3px rgb(128, 124, 112);
+}
+
 .song-card-wrapper {
   display: flex;
   gap: 30px;
@@ -157,7 +189,7 @@ body {
   font-family: 'Charmonman', cursive;
   font-weight: 900;
   font-size: 45px;
-  margin: 0;
+  margin: 0 0 10px 0;
 }
 
 .song__title, .song__releaseYear, .song__performer {
@@ -167,7 +199,7 @@ body {
   padding: 12px 10px;
   max-width: 400px;
   width: 100%;
-  background-color: rgb(245, 242, 242);
+  background-color: rgb(242, 237, 223);
   font-size: 18px;
 
     &:focus {
@@ -183,7 +215,7 @@ body {
   padding: 35px 10px;
   max-width: 400px;
   width: 100%;
-  background-color: rgb(245, 242, 242);
+  background-color: rgb(242, 237, 223);
   font-size: 18px;
 
     &:focus {
@@ -194,12 +226,12 @@ body {
 
 .song__add-button {
   padding: 15px 20px;
-  max-width: 100px;
+  max-width: 150px;
   width: 100%;
   border-radius: 10px;
   margin: 0;
   border: 3px solid rgb(59, 58, 58);;
-  background-color: #c1fdaf;
+  background-color: rgb(202, 195, 174);
   color: rgb(59, 58, 58);
   font-family: 'Shalimar', cursive;
   font-size: 20px;
@@ -238,17 +270,118 @@ body {
 
 .song__add-button:focus {
   background-color: rgb(59, 58, 58);
-  color: #c1fdaf;
+  color: rgb(202, 195, 174);
   opacity: 1;
-  border: 3px solid #c1fdaf;
+  border: 3px solid rgb(202, 195, 174);
 }
 
 .images {
   width: 100%;
+  height: 100%;
   min-height: 300px;
   max-height: 300px;
   border-radius: 36px;
   margin: 0px;
   object-fit: cover;
   border: 1px solid rgb(59, 58, 58);
+}
+
+.clicked__image {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  max-height: 300px;
+  border-radius: 36px 36px 0 0 ;
+  margin: 0px;
+  object-fit: cover;
+  border: 1px solid rgb(59, 58, 58);
+}
+
+.clicked__song {
+  padding-bottom: 20px;
+}
+
+.clicked-image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.navigation-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.navigation__home {
+  text-decoration: none;
+  color: rgb(59, 58, 58);
+  transition: transform 0.2s;
+  background-color: rgb(220, 204, 182);
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: rgb(144, 133, 115) solid 1px;
+  font-size: 22px;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &:active {
+      background-color: rgb(59, 58, 58);
+      color: rgb(220, 204, 182);
+      border: rgb(220, 204, 182) 1px solid;
+    }
+}
+
+.about-wrapper, .home-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about__header, .home__header {
+  font-size: 50px;
+  margin: 20px 0 0 0 ;
+}
+
+.about__cat-image {
+  max-width: 500px;
+  margin-top: 70px;
+  transition: transform 0.3s;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 2px black;
+}
+
+.about__cat-image.spinning {
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about__cat-image:hover {
+  transform: scale(1.2);
+}
+
+.home__image {
+  max-width: 700px;
+  margin: 20px 0 0 0;
+  border-radius: 15px;
+  cursor: pointer;
+
+    &:hover {
+      opacity: 0.9;
+    }
+}
+
+.home__paragraph {
+  margin: 10px 0 0 0;
+  font-size: 18px;
 }

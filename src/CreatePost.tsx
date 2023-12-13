@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRef } from "react";
 import { createSong } from "./api/posts";
+import { useNavigate } from "react-router-dom";
 
 const maxPictures = 20;
 
@@ -16,51 +17,66 @@ const getRandomImage = () => {
 }
 
 export const CreatePost = () => {
-    const nameRef = useRef();
-    const performerRef = useRef();
-    const descriptionRef = useRef();
-    const releaseYearRef = useRef();
+    const navigate = useNavigate();
+    const nameRef = useRef<HTMLInputElement>(null);
+    const performerRef = useRef<HTMLInputElement>(null);
+    const descriptionRef = useRef<HTMLInputElement>(null);
+    const releaseYearRef = useRef<HTMLInputElement>(null);
+
     const createPostMutation = useMutation({
         mutationFn: createSong,
+        onSuccess: () => {
+            navigate('/songs');
+        }
     })
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         createPostMutation.mutate({
-            name: nameRef.current.value,
-            performer: performerRef.current.value,
-            description: descriptionRef.current.value,
-            releaseYear: releaseYearRef.current.value,
+            name: nameRef.current?.value || '',
+            performer: performerRef.current?.value || '',
+            description: descriptionRef.current?.value || '',
+            releaseYear: releaseYearRef.current?.value || '',
             image: getRandomImage(),
         })
-        
     }
+
     return (
-        <div>
-            <h1>Create Post</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="name">Name</label>
-                    <input id="name" ref={nameRef}/>
-                </div>
-                <div>
-                    <label htmlFor="performer">Performer</label>
-                    <input id="performer" ref={performerRef}/>
-                </div>
-                <div>
-                    <label htmlFor="description">Description</label>
-                    <input id="description" ref={descriptionRef}/>
-                </div>
-                <div>
-                    <label htmlFor="releaseYear">Release Year</label>
-                    <input id="releaseYear" ref={releaseYearRef}/>
-                </div>
-                <button type="submit">
-                    {createPostMutation.isLoading ? 'Loading...' : 'Create'}
-                </button>
-            </form>
+        <div className='form-wrapper'>
+            <div className="form-background">
+                <h1 className='form__header'>Create NEW Song</h1>
+                <form
+                onSubmit={handleSubmit} 
+                className='js-song-edit-form song-form' >
+                    <input
+                    type='text'
+                    className='song__title'
+                    placeholder='Song name...'
+                    ref={nameRef}
+                    />
+                    <input
+                    type='text'
+                    className='song__performer'
+                    placeholder='Song performer...'
+                    ref={performerRef}
+                    />
+                    <input
+                    type='text'
+                    className='song__description'
+                    placeholder='Song description...'
+                    ref={descriptionRef}
+                    />
+                    <input
+                    type='text'
+                    className='song__releaseYear'
+                    placeholder='Release year...'
+                    ref={releaseYearRef}
+                    />
+                    <div className='add-button-wrapper'>
+                        <button type="submit" className='song__add-button'> Create </button>
+                    </div>
+                </form>
         </div>
-    
+    </div>
     )
 }
-
